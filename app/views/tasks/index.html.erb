@@ -1,9 +1,15 @@
-<h1>My tasks</h1>
-
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task_path(task) %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Create a new task", new_task_path %>
+<div class="row justify-content-center mt-5">
+  <div class="col-6">
+    <h1>My tasks</h1>
+      <ul class="list-group">
+        <% @tasks.each do |task| %>
+          <% if task.completed == false %>
+            <li class="list-group-item"><i class="fa-regular fa-square"></i> <%= link_to task.title, task_path(task), class: "text-decoration-none text-dark" %></li>
+          <% else %>
+            <li class="list-group-item"><i class="fa-regular fa-square-check"></i> <%= link_to task.title, task_path(task), class: "text-decoration-none text-dark" %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <%= link_to "Create a new task", new_task_path, class: 'btn btn-primary mt-3' %>
+  </div>
+</div>
